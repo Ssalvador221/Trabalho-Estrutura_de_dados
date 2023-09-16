@@ -1,16 +1,26 @@
+
+#Listas
 analise = []
 horasRealizadas = []
-#########################################################
 pendencias = []
 matriculas = []
 solicitacoes = []
 codigosDeHorasComplementares = [1,10,322,324,345,456]
 #########################################################
+
+
+#Contadores
 contAnalise = 0
+contSolicitacoes = 0
+
+
 #Adicionar
 def adicionar():
+    #Inputs para ler os valores!
     numMatricula = int(input("Digite sua matrícula: "))
     codigo = int(input("Digite o código das horas complementares: "))
+    
+    #Adição de valores as filas e correção da formatação dos numeros 001 e 010.
     while True:
         if(codigo != codigosDeHorasComplementares):
             matriculas.append(numMatricula)
@@ -22,11 +32,16 @@ def adicionar():
                     else:
                         print(mNum, "-", cod)      
 
-            contSolicitacoes+1
+            #Contadores
+            contAnalise = 0
+            contSolicitacoes = 0
+            #Contadores aqui adicionam 1 sempre que passa por aqui
+            contAnalise += 1
+            contSolicitacoes += 1  
             
-            contAnalise+1
-
+            analise.append(contAnalise)
             solicitacoes.append(contSolicitacoes)
+            
             break     
         else:
             print("Codigo Invalid")
@@ -34,8 +49,8 @@ def adicionar():
 
 #Analisar
 def analisar():
-    if contAnalise != 0:
-        print("Os seguintes documentos estão na fila para analise: ", contAnalise)
+    if analise != 0:
+        print("Os seguintes documentos estão na fila para analise: ", len(analise))
     else:
         print("Não temos solicitação para análise!")
 
@@ -56,7 +71,7 @@ def relatorio():
     print("O total de solicitações que forma validadas: ", qtd_hor)
     print("O total de solicitações analisadas no semestre foram:", qtd_total)
 
-contSolicitacoes = 0
+
 
 
 
